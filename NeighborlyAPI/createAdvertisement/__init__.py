@@ -13,7 +13,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             database = client['neigbourlymongodb']
             collection = database['advertisements']
 
-            rec_id1 = collection.insert_one(eval(request))
+            rec_id1 = collection.insert(eval(request))
 
             return func.HttpResponse(req.get_body())
 

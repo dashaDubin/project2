@@ -1,2 +1,12 @@
 azure-functions==1.6.0
 pymongo==3.11.3
+flask
+requests
+flask-bootstrap
+flask-restplus
+flask-swagger-ui
+werkzeug
+azure-cosmos
+azure-cli-core
+feedgen
+

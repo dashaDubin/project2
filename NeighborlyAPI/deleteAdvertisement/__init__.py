@@ -15,7 +15,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             collection = database['advertisements']
             
             query = {'_id': ObjectId(id)}
-            result = collection.delete_one(query)
+            result = collection.delete(query)
             return func.HttpResponse("")
 
         except:

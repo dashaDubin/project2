@@ -17,7 +17,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             
             filter_query = {'_id': ObjectId(id)}
             update_query = {"$set": eval(request)}
-            rec_id1 = collection.update_one(filter_query, update_query)
+            rec_id1 = collection.update(filter_query, update_query)
             return func.HttpResponse(status_code=200)
         except:
             print("could not connect to mongodb")

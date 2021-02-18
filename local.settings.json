@@ -1,11 +1,12 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "FUNCTIONS_WORKER_RUNTIME": "CfDJ8NemetxPrulMk4VQF3h2u5V3ADRjy/Jo1p6bfiMEXky4ALLtczNKKLLh9yKLbT08yPpZr5Z6T9JnvrXqpI4gUR2n9STZk0vI9MrI7RsxRMoL2rgKV0lF9l9b2JnK5OAiLQ==",
-    "FUNCTIONS_EXTENSION_VERSION": "CfDJ8NemetxPrulMk4VQF3h2u5W9Xsg9bLK60klcK8DRcL7m1+GOWYzv1KUQuqnwDQwv39zeom6pe2buEuXD+sUINjmZcyahMdasrYju3lXs56dHJFauhMO0T+vAeSqOMF3Ehg==",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "FUNCTIONS_EXTENSION_VERSION": "~3",
     "MyDBConnection": "mongodb://myneighborlyapiv1cosmosdb:3R1lODz9uJLArhzlpvYz1Cnll7WGfG8eJ53hY04HxEEh7mmW5PRkFbGmvPZyUzNjY4I8STbM17HIyDV11QFebw==@myneighborlyapiv1cosmosdb.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@myneighborlyapiv1cosmosdb@",
-    "AzureWebJobsStorage": "CfDJ8NemetxPrulMk4VQF3h2u5WDth7CyGvrfxe1qYGepaBA2h8u1ktUn6bpinN1r7hQKrU0nBqQRMqiOVSiIu6h3x7qMuwCAGLK4RhT4ayrFZXwnPc5WIevlf3REEHK901TuwELcR43Q+cAkQq4ZoZFy4Irb9Kl/ObV6mmOZb5XqBdl1o5FnwlG+WUBmq+gdmLWbsX6+L2V+o8FQRJN8uUPfNsbIViqQoXXfN2gUsTlNgxVBU5tJGru9Ggd9szyROazKblnimxPLDBgZ543xzGNazVdabjcFLQ7yyVKP0Hjz6xLfK+4SeQv1XCUJutgPU6/f0GKf3Nb8StnPKzdSr47/X5i4TczS6DrH4SfEeScqRQNv2QIhDxavzL80DRqIMMhYA==",
-    "projectLanguage": "CfDJ8NemetxPrulMk4VQF3h2u5VFzoP7XMVB1oqi2CuJj6n+dZbbp2fny2hWC232Hc3HtAi+4Z2ZD03cJv+RcJdETGNzd+ggVmBiYrRFUniUPIeCCuE19xuFE9n07/CPnIAKUw=="
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=myneighborlyapiv1storage;AccountKey=kU1V4zq54FBntlxby7V7AqoaPoFV2035jFeXC41YX/PwRyvX52znlbD2J+eEBELFaCgGiuypYLrpwFoDKF/bxQ==;EndpointSuffix=core.windows.net",
+    "projectLanguage": "python",
+    "connection": "Endpoint=sb://myneighbourly.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=LGY+T7XU5muypiWSlhMlQVQGzUUkMJAWJwRXUpC0714="
   },
   "ConnectionStrings": {}
 }

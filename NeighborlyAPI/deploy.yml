@@ -1,0 +1,147 @@
+data:
+  FUNCTIONS_EXTENSION_VERSION: fjM=
+  FUNCTIONS_WORKER_RUNTIME: cHl0aG9u
+  AzureWebJobsStorage: RGVmYXVsdEVuZHBvaW50c1Byb3RvY29sPWh0dHBzO0FjY291bnROYW1lPW15bmVpZ2hib3JseWFwaXYxc3RvcmFnZTtBY2NvdW50S2V5PWtVMVY0enE1NEZCbnRseGJ5N1Y3QXFvYVBvRlYyMDM1akZlWEM0MVlYL1B3Unl2WDUyem5sYkQySitlRUJFTEZhQ2dHaXV5cFlMcnB3Rm9ES0YvYnhRPT07RW5kcG9pbnRTdWZmaXg9Y29yZS53aW5kb3dzLm5ldA==
+  MyDBConnection: bW9uZ29kYjovL215bmVpZ2hib3JseWFwaXYxY29zbW9zZGI6M1IxbE9Eejl1SkxBcmh6bHB2WXoxQ25sbDdXR2ZHOGVKNTNoWTA0SHhFRWg3bW1XNVBSa0ZiR212UFp5VXpOalk0SThTVGJNMTdISXlEVjExUUZlYnc9PUBteW5laWdoYm9ybHlhcGl2MWNvc21vc2RiLm1vbmdvLmNvc21vcy5henVyZS5jb206MTAyNTUvP3NzbD10cnVlJnJlcGxpY2FTZXQ9Z2xvYmFsZGImcmV0cnl3cml0ZXM9ZmFsc2UmbWF4SWRsZVRpbWVNUz0xMjAwMDAmYXBwTmFtZT1AbXluZWlnaGJvcmx5YXBpdjFjb3Ntb3NkYkA=
+  connection: RW5kcG9pbnQ9c2I6Ly9teW5laWdoYm91cmx5LnNlcnZpY2VidXMud2luZG93cy5uZXQvO1NoYXJlZEFjY2Vzc0tleU5hbWU9Um9vdE1hbmFnZVNoYXJlZEFjY2Vzc0tleTtTaGFyZWRBY2Nlc3NLZXk9TEdZK1Q3WFU1bXV5cGlXU2xoTWxRVlFHelVVa01KQVdKd1JYVXBDMDcxND0=
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mykubecluster
+  namespace: default
+---
+data:
+  host.master: eWliYmFYRkNUMkFTU3RkTkVjYWM4Ym5CT0pxYThDVXdUYU5CQjZhalJkQ0w3VlF5MnBvd2ZRPT0=
+  host.function.default: RlVPYW9wR0JIb1NDSkUyN0tnZWVHdFloNDROamtlMWJDZ1ZFVGdTdWtlR0s0cktzUzlqUThBPT0=
+  host.systemKey.default: T3Q1cGx4bi8wNVpBdXFYWldQdURIV2FiWFg2ejI2eHhJcUFyRDBKMWVGajNUWHFKYUV4OXlnPT0=
+  functions.createadvertisement.default: cW9lSmFGUlI0cFFOcDIzZWdSYzNDVGFYQndQNFJXbVlHT0RvWDRId0MyWGxhckVJVXJvZ21RPT0=
+  functions.deleteadvertisement.default: MzdzSjlGbDI4VFpILzdrTnd5RnhMS09uRWJaZTVlSTA3c1V3akRvazdQRFNZQWY5RFhVYnBRPT0=
+  functions.getadvertisement.default: bS9lYUh2V01lOERuUFZzWlJteWswNUdwanIzQTQwaGN0Y1NsaS82TDhaMTNLWDF3SVdDWUN3PT0=
+  functions.getadvertisements.default: RjRJTDN0dm5mSWNpYUFUWXBMSTVrcjliSlg0aGdUM2lCYVRpTzdJNGlRWXJ4VjJnUnkyS0d3PT0=
+  functions.getpost.default: cXhMSFZoMzVmVENRU0FkbDV4aEk4b1dDeUhIVXV5OVUvbzhOMXVkUFlDcVhIVklxMzNUUnVnPT0=
+  functions.getposts.default: aGVGZll3TTZ2SFVvSWdMdFpad1RYVXk0REpWREZTdVh5TkFwQ0lYbGRCc25iOWxweFFOYzNBPT0=
+  functions.updateadvertisement.default: Y2FSQTJXYXdVeFg4RTVlWWE3WHF1QjZueUIxUWVOZEN0NHJ4THVTWE9SVk5EOFFpQkFVRUVnPT0=
+apiVersion: v1
+kind: Secret
+metadata:
+  name: func-keys-kube-secret-mykubecluster
+  namespace: default
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mykubecluster-function-keys-identity-svc-act
+  namespace: default
+---
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  - configMaps
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: functions-keys-manager-role
+  namespace: default
+---
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: functions-keys-manager-role
+subjects:
+- kind: ServiceAccount
+  name: mykubecluster-function-keys-identity-svc-act
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mykubecluster-function-keys-identity-svc-act-functions-keys-manager-rolebinding
+  namespace: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mykubecluster-http
+  namespace: default
+spec:
+  selector:
+    app: mykubecluster-http
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mykubecluster-http
+  namespace: default
+  labels:
+    app: mykubecluster-http
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mykubecluster-http
+  template:
+    metadata:
+      labels:
+        app: mykubecluster-http
+    spec:
+      containers:
+      - name: mykubecluster-http
+        image: neighborlyregistry.azurecr.io/neighborlyimage3
+        ports:
+        - containerPort: 80
+        env:
+        - name: AzureFunctionsJobHost__functions__0
+          value: createAdvertisement
+        - name: AzureFunctionsJobHost__functions__1
+          value: deleteAdvertisement
+        - name: AzureFunctionsJobHost__functions__2
+          value: getAdvertisement
+        - name: AzureFunctionsJobHost__functions__3
+          value: getAdvertisements
+        - name: AzureFunctionsJobHost__functions__4
+          value: getPost
+        - name: AzureFunctionsJobHost__functions__5
+          value: getPosts
+        - name: AzureFunctionsJobHost__functions__6
+          value: updateAdvertisement
+        - name: AzureWebJobsSecretStorageType
+          value: kubernetes
+        - name: AzureWebJobsKubernetesSecretName
+          value: secrets/func-keys-kube-secret-mykubecluster
+        envFrom:
+        - secretRef:
+            name: mykubecluster
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+        startupProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+      serviceAccountName: mykubecluster-function-keys-identity-svc-act
+---
+

@@ -7,7 +7,7 @@ import os
 def main(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
-        url = os.environ['MyDBConnection']
+        url = "mongodb://myneighborlyapiv1cosmosdb:3R1lODz9uJLArhzlpvYz1Cnll7WGfG8eJ53hY04HxEEh7mmW5PRkFbGmvPZyUzNjY4I8STbM17HIyDV11QFebw==@myneighborlyapiv1cosmosdb.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@myneighborlyapiv1cosmosdb@" #os.environ['MyDBConnection']
         client = pymongo.MongoClient(url)
         database = client['neigbourlymongodb']
         collection = database['advertisements']

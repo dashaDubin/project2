@@ -6,17 +6,16 @@ import os
 def main(req: func.HttpRequest) -> func.HttpResponse:
 
     id = req.params.get('id')
-
     if id:
         try:
             url = os.environ['MyDBConnection']
             client = pymongo.MongoClient(url)
             database = client['neigbourlymongodb']
             collection = database['advertisements']
-            
+
             query = {'_id': ObjectId(id)}
-            result = collection.delete(query)
-            return func.HttpResponse("")
+            result = collection.delete_one(query)
+            return func.HttpResponse("Deleted")
 
         except:
             print("could not connect to mongodb")
